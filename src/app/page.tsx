@@ -1,13 +1,7 @@
 "use client";
 
-import dynamic from 'next/dynamic';
+import ReactFullpage from "@fullpage/react-fullpage";
 import ParticlesBackground from "./components/ParticlesBackground";
-import { ReactElement } from "react";
-
-// Import the ReactFullpage component dynamically with no SSR to avoid hydration issues
-const ReactFullpage = dynamic(() => import('@fullpage/react-fullpage'), {
-  ssr: false
-});
 
 export default function Home() {
   return (
@@ -20,9 +14,9 @@ export default function Home() {
       anchors={["home", "publications", "blogs", "projects", "education", "contact"]}
       navigationTooltips={["Home", "Publications", "Blog", "Projects", "Education", "Contact"]}
       credits={{ enabled: false }}
-      render={({ state, fullpageApi }): ReactElement => {
+      render={({ state, fullpageApi }) => {
         return (
-          <div className="fullpage-wrapper">
+          <ReactFullpage.Wrapper>
             {/* Home Section */}
             <div className="section relative overflow-hidden bg-white text-gray-800">
               {/* Particles Background */}
@@ -316,7 +310,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </ReactFullpage.Wrapper>
         );
       }}
     />
